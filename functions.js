@@ -71,4 +71,31 @@ console.log(status);
  }
  var value=getPropertyNames(o);
  console.log(a);
+//arguments类数组
+var sum=function(){
+  var i=0,sum=0;
+  for(i=0;i<arguments.length;i++)
+    sum+=arguments[i];
+  return sum;
+}
+console.log(sum(4,5,6,7));
+//异常
+var add=function(a,b){
+  if(typeof a!=='number'||typeof b!=='number'){
+    throw{
+      name:'TypeError',
+      message:'add needs number'
 
+    };
+  }
+    return a+b;
+}
+//构造一个try_it函数，以不正确的方式调用之前的add函数
+var try_it=function(){
+  try{
+    add("seven");
+  }catch(e){
+     console.log(e.name+'; '+e.message);
+  }
+}
+try_it();
